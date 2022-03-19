@@ -31,7 +31,7 @@ namespace DungeonCards
             for (int a = 0; a < controls.Count; a++)
                 if (controls[a] is Panel)
                 {
-                    cards[index_of_card] = new Card(Convert.ToString(index_of_card++), (Panel)controls[a]);
+                    cards[index_of_card] = new Card("Карта - "+Convert.ToString(index_of_card++), (Panel)controls[a]);
                 }
         }
 

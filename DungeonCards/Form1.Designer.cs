@@ -118,7 +118,6 @@ namespace DungeonCards
             this.player.Size = new System.Drawing.Size(400, 400);
             this.player.TabIndex = 4;
             this.player.TabStop = false;
-            this.player.Click += new System.EventHandler(this.Player_Click);
             // 
             // pictureBox5
             // 

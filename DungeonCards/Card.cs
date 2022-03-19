@@ -25,16 +25,20 @@ namespace DungeonCards
             this.panel = panel;
 
             var controls = this.panel.Controls;
+            this.panel.Click += this.click;
             for (int a = 0; a < controls.Count; a++)
             {
+                controls[a].Click += this.click;
                 if (controls[a] is Label)
                 {
                     ((Label)controls[a]).Text = this.name;
                 }
             }
+            
         }
-        public void сolorize(EventArgs e)
+        void click(object sender, EventArgs e)
         {
+            this.panel.BackColor = Color.Black;
         }
     }
 }
