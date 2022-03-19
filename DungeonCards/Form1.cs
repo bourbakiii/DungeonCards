@@ -32,7 +32,6 @@ namespace DungeonCards
                 if (controls[a] is Panel)
                 {
                     cards[index_of_card] = new Card(Convert.ToString(index_of_card++), (Panel)controls[a]);
-                    (Panel)controls[a].Click += cards[index_of_card].сolorize;
                 }
         }
 
