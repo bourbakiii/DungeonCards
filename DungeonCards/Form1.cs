@@ -25,14 +25,16 @@ namespace DungeonCards
         {
 
             player.BackColor = Color.Green;
-
             var controls = this.Controls;
             int index_of_card = 0;
             for (int a = 0; a < controls.Count; a++)
+            {
+                if (a == 4) continue;
                 if (controls[a] is Panel)
                 {
-                    cards[index_of_card] = new Card("Карта - "+Convert.ToString(index_of_card++), (Panel)controls[a]);
+                    cards[index_of_card] = new Card("Анатолий", 10, "enemy", (Panel)controls[a]);
                 }
+            }
         }
 
         private void Card_click(object sender, EventArgs e)
@@ -47,10 +49,7 @@ namespace DungeonCards
             player.Location = new Point(card_x, card_y);
         }
 
-        private void colorize(object sender, EventArgs e)
-        {
 
-        }
     }
 
 }
