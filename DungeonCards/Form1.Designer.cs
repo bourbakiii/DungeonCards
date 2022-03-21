@@ -50,7 +50,6 @@ namespace DungeonCards
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.player = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
@@ -74,6 +73,11 @@ namespace DungeonCards
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.player_panel = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.pictureBox19 = new System.Windows.Forms.PictureBox();
+            this.pictureBox20 = new System.Windows.Forms.PictureBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -86,7 +90,6 @@ namespace DungeonCards
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            this.player.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.panel6.SuspendLayout();
@@ -101,6 +104,9 @@ namespace DungeonCards
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
+            this.player_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             this.SuspendLayout();
             // 
             // debugger
@@ -357,17 +363,6 @@ namespace DungeonCards
             this.label8.Tag = "name";
             this.label8.Text = "Имя";
             this.label8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // player
-            // 
-            this.player.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.player.Controls.Add(this.label9);
-            this.player.Controls.Add(this.pictureBox8);
-            this.player.Controls.Add(this.pictureBox9);
-            this.player.Location = new System.Drawing.Point(400, 400);
-            this.player.Name = "player";
-            this.player.Size = new System.Drawing.Size(400, 400);
-            this.player.TabIndex = 13;
             // 
             // label9
             // 
@@ -646,16 +641,78 @@ namespace DungeonCards
             this.label18.Text = "Имя";
             this.label18.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+            // player_panel
+            // 
+            this.player_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.player_panel.Controls.Add(this.label10);
+            this.player_panel.Controls.Add(this.pictureBox19);
+            this.player_panel.Controls.Add(this.pictureBox20);
+            this.player_panel.Controls.Add(this.label19);
+            this.player_panel.Location = new System.Drawing.Point(400, 400);
+            this.player_panel.Name = "player_panel";
+            this.player_panel.Size = new System.Drawing.Size(400, 400);
+            this.player_panel.TabIndex = 14;
+            this.player_panel.Tag = "player";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoEllipsis = true;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.ForeColor = System.Drawing.Color.DarkRed;
+            this.label10.Location = new System.Drawing.Point(332, 18);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 37);
+            this.label10.TabIndex = 3;
+            this.label10.Tag = "health";
+            this.label10.Text = "0";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // pictureBox19
+            // 
+            this.pictureBox19.Location = new System.Drawing.Point(29, 69);
+            this.pictureBox19.Name = "pictureBox19";
+            this.pictureBox19.Size = new System.Drawing.Size(76, 276);
+            this.pictureBox19.TabIndex = 2;
+            this.pictureBox19.TabStop = false;
+            // 
+            // pictureBox20
+            // 
+            this.pictureBox20.Location = new System.Drawing.Point(62, 69);
+            this.pictureBox20.Name = "pictureBox20";
+            this.pictureBox20.Size = new System.Drawing.Size(302, 276);
+            this.pictureBox20.TabIndex = 1;
+            this.pictureBox20.TabStop = false;
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.AutoEllipsis = true;
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(33, 348);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(78, 37);
+            this.label19.TabIndex = 0;
+            this.label19.Tag = "name";
+            this.label19.Text = "Имя";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
             // Game_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2995, 1447);
+            this.Controls.Add(this.player_panel);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
-            this.Controls.Add(this.player);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -683,8 +740,6 @@ namespace DungeonCards
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            this.player.ResumeLayout(false);
-            this.player.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.panel6.ResumeLayout(false);
@@ -703,6 +758,10 @@ namespace DungeonCards
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
+            this.player_panel.ResumeLayout(false);
+            this.player_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -730,7 +789,6 @@ namespace DungeonCards
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel player;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
@@ -754,6 +812,11 @@ namespace DungeonCards
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.PictureBox pictureBox18;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Panel player_panel;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox pictureBox19;
+        private System.Windows.Forms.PictureBox pictureBox20;
+        private System.Windows.Forms.Label label19;
     }
 }
 

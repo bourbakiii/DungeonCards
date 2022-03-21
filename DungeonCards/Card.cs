@@ -22,6 +22,7 @@ namespace DungeonCards
         public Panel panel;
         public Label name_label;
         public Label health_label;
+        protected Card() {}
         public Card(string name, int health, string type, Panel panel)
         {
             this.name = name ?? "Enemy name";
