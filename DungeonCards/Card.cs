@@ -22,6 +22,8 @@ namespace DungeonCards
         public Panel panel;
         public Label name_label;
         public Label health_label;
+        public PictureBox picture_pictureBox;
+        public PictureBox weapon_pictureBox;
         protected Card() {}
         public Card(string name, int health, string type, Panel panel)
         {
@@ -31,13 +33,12 @@ namespace DungeonCards
             this.panel = panel;
 
             var controls = this.panel.Controls;
-            this.panel.Click += this.click;
             //this.panel.BackColor = this.type == "enemy" ? Color.DarkRed : this.type == "trap" ? Color.Gray : this.panel.BackColor;
 
             for (int a = 0; a < controls.Count; a++)
             {
-                controls[a].Click += this.click;
-                if (controls[a] is Label)
+                //controls[a].Click += this.click;
+                if (controls[a] is Label || controls[a] is PictureBox)
                 {
                     switch (Convert.ToString(controls[a].Tag))
                     {
@@ -51,15 +52,21 @@ namespace DungeonCards
                                 this.health_label = (Label)controls[a];
                                 break;
                             }
+                        case "picture":
+                            {
+                                this.picture_pictureBox = (PictureBox)controls[a];
+                                break;
+                            }
+                        case "weapon":
+                            {
+                                this.weapon_pictureBox = (PictureBox)controls[a];
+                                break;
+                            }
                     }
                 }
             }
             this.name_label.Text = this.name;
             if (this.health_label != null) this.health_label.Text = Convert.ToString(this.health);
-        }
-        void click(object sender, EventArgs e)
-        {
-            this.panel.BackColor = Color.Black;
         }
     }
 }

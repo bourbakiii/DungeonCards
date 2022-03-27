@@ -116,7 +116,7 @@ namespace DungeonCards
             this.debugger.Multiline = true;
             this.debugger.Name = "debugger";
             this.debugger.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.debugger.Size = new System.Drawing.Size(668, 1295);
+            this.debugger.Size = new System.Drawing.Size(668, 1200);
             this.debugger.TabIndex = 9;
             this.debugger.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -156,6 +156,7 @@ namespace DungeonCards
             this.pictureBox10.Size = new System.Drawing.Size(76, 276);
             this.pictureBox10.TabIndex = 2;
             this.pictureBox10.TabStop = false;
+            this.pictureBox10.Tag = "weapon";
             // 
             // pictureBox4
             // 
@@ -164,6 +165,7 @@ namespace DungeonCards
             this.pictureBox4.Size = new System.Drawing.Size(302, 276);
             this.pictureBox4.TabIndex = 1;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Tag = "picture";
             // 
             // label1
             // 
@@ -217,6 +219,7 @@ namespace DungeonCards
             this.pictureBox1.Size = new System.Drawing.Size(76, 276);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "weapon";
             // 
             // pictureBox2
             // 
@@ -225,6 +228,7 @@ namespace DungeonCards
             this.pictureBox2.Size = new System.Drawing.Size(302, 276);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Tag = "picture";
             // 
             // label4
             // 
@@ -278,6 +282,7 @@ namespace DungeonCards
             this.pictureBox3.Size = new System.Drawing.Size(76, 276);
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Tag = "weapon";
             // 
             // pictureBox5
             // 
@@ -286,6 +291,7 @@ namespace DungeonCards
             this.pictureBox5.Size = new System.Drawing.Size(302, 276);
             this.pictureBox5.TabIndex = 1;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Tag = "picture";
             // 
             // label6
             // 
@@ -339,6 +345,7 @@ namespace DungeonCards
             this.pictureBox6.Size = new System.Drawing.Size(76, 276);
             this.pictureBox6.TabIndex = 2;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Tag = "weapon";
             // 
             // pictureBox7
             // 
@@ -347,6 +354,7 @@ namespace DungeonCards
             this.pictureBox7.Size = new System.Drawing.Size(302, 276);
             this.pictureBox7.TabIndex = 1;
             this.pictureBox7.TabStop = false;
+            this.pictureBox7.Tag = "picture";
             // 
             // label8
             // 
@@ -433,6 +441,7 @@ namespace DungeonCards
             this.pictureBox11.Size = new System.Drawing.Size(76, 276);
             this.pictureBox11.TabIndex = 2;
             this.pictureBox11.TabStop = false;
+            this.pictureBox11.Tag = "weapon";
             // 
             // pictureBox12
             // 
@@ -441,6 +450,7 @@ namespace DungeonCards
             this.pictureBox12.Size = new System.Drawing.Size(302, 276);
             this.pictureBox12.TabIndex = 1;
             this.pictureBox12.TabStop = false;
+            this.pictureBox12.Tag = "picture";
             // 
             // label12
             // 
@@ -494,6 +504,7 @@ namespace DungeonCards
             this.pictureBox13.Size = new System.Drawing.Size(76, 276);
             this.pictureBox13.TabIndex = 2;
             this.pictureBox13.TabStop = false;
+            this.pictureBox13.Tag = "weapon";
             // 
             // pictureBox14
             // 
@@ -502,6 +513,7 @@ namespace DungeonCards
             this.pictureBox14.Size = new System.Drawing.Size(302, 276);
             this.pictureBox14.TabIndex = 1;
             this.pictureBox14.TabStop = false;
+            this.pictureBox14.Tag = "picture";
             // 
             // label14
             // 
@@ -555,6 +567,7 @@ namespace DungeonCards
             this.pictureBox15.Size = new System.Drawing.Size(76, 276);
             this.pictureBox15.TabIndex = 2;
             this.pictureBox15.TabStop = false;
+            this.pictureBox15.Tag = "weapon";
             // 
             // pictureBox16
             // 
@@ -563,6 +576,7 @@ namespace DungeonCards
             this.pictureBox16.Size = new System.Drawing.Size(302, 276);
             this.pictureBox16.TabIndex = 1;
             this.pictureBox16.TabStop = false;
+            this.pictureBox16.Tag = "picture";
             // 
             // label16
             // 
@@ -616,6 +630,7 @@ namespace DungeonCards
             this.pictureBox17.Size = new System.Drawing.Size(76, 276);
             this.pictureBox17.TabIndex = 2;
             this.pictureBox17.TabStop = false;
+            this.pictureBox17.Tag = "weapon";
             // 
             // pictureBox18
             // 
@@ -624,6 +639,7 @@ namespace DungeonCards
             this.pictureBox18.Size = new System.Drawing.Size(302, 276);
             this.pictureBox18.TabIndex = 1;
             this.pictureBox18.TabStop = false;
+            this.pictureBox18.Tag = "picture";
             // 
             // label18
             // 
@@ -678,6 +694,7 @@ namespace DungeonCards
             this.pictureBox19.Size = new System.Drawing.Size(76, 276);
             this.pictureBox19.TabIndex = 2;
             this.pictureBox19.TabStop = false;
+            this.pictureBox19.Tag = "weapon";
             // 
             // pictureBox20
             // 
@@ -686,6 +703,7 @@ namespace DungeonCards
             this.pictureBox20.Size = new System.Drawing.Size(302, 276);
             this.pictureBox20.TabIndex = 1;
             this.pictureBox20.TabStop = false;
+            this.pictureBox20.Tag = "picture";
             // 
             // label19
             // 
