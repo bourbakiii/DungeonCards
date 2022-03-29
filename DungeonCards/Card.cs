@@ -17,8 +17,6 @@ namespace DungeonCards
         public int health = 1;
         public string type = "Enemy";
         public int points = 0;
-        public int index_row = 0;
-        public int index_column = 0;
         public Panel panel;
         public Label name_label;
         public Label health_label;

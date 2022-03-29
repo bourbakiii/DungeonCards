@@ -27,7 +27,20 @@ namespace DungeonCards
         {
             player.panel.BackColor = Color.Green;
 
-            Location buffer_location = player.panel.Location;
+            Control panel;
+            if (sender is Label) { panel = (Label)sender; panel = panel.Parent; }
+            else if (sender is PictureBox) { panel = (PictureBox)sender ; panel = panel.Parent; }
+            else panel = (Panel)sender;
+            panel.BackColor = Color.Lavender;
+            debugger.Text = Math.Abs((player.panel.Location.X + panel.Location.X) - (player.panel.Location.Y + panel.Location.Y)).ToString();
+
+            if (Math.Abs((player.panel.Location.X - panel.Location.X) + (player.panel.Location.Y - panel.Location.Y)) == 200)
+            {
+                //debugger.Text = "Алло";
+                Point buffer_location = player.panel.Location;
+                player.panel.Location = new Point(panel.Location.X, panel.Location.Y);
+                panel.Location = buffer_location;
+            }
         }
         public void Game_Form_Load(object sender, EventArgs e)
         {
@@ -49,6 +62,10 @@ namespace DungeonCards
             
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
