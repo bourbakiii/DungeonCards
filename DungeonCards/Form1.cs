@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static DungeonCards.Card;
 using static DungeonCards.Player;
+using static DungeonCards.IndexStorage;
 
 namespace DungeonCards
 {
@@ -17,7 +18,7 @@ namespace DungeonCards
         int rows_count = 3;
         int columns_count = 3;
         Card[] cards = new Card[8];
-        Player player;
+        Player second;
         public Game_Form()
         {
             InitializeComponent();
@@ -25,41 +26,61 @@ namespace DungeonCards
         public delegate void CardDelegate();
         public void card_click(object sender, EventArgs e)
         {
-            player.panel.BackColor = Color.Green;
-
             Control panel;
             if (sender is Label) { panel = (Label)sender; panel = panel.Parent; }
-            else if (sender is PictureBox) { panel = (PictureBox)sender ; panel = panel.Parent; }
+            else if (sender is PictureBox) { panel = (PictureBox)sender; panel = panel.Parent; }
             else panel = (Panel)sender;
-            panel.BackColor = Color.Lavender;
-            debugger.Text = Math.Abs((player.panel.Location.X + panel.Location.X) - (player.panel.Location.Y + panel.Location.Y)).ToString();
-
-            if (Math.Abs((player.panel.Location.X - panel.Location.X) + (player.panel.Location.Y - panel.Location.Y)) == 200)
+            change_positions(player.panel, panel);
+            void change_positions(Panel first, Panel second)
             {
-                //debugger.Text = "Алло";
-                Point buffer_location = player.panel.Location;
-                player.panel.Location = new Point(panel.Location.X, panel.Location.Y);
-                panel.Location = buffer_location;
+                IndexStorage first_tag = (IndexStorage)first.Tag;
+                IndexStorage second_tag = (IndexStorage)second.Tag;
+                if (Math.Abs((first_tag.row - second_tag.row) + (first_tag.column - second_tag.column)) == 1 &&
+                Math.Abs(first_tag.row - second_tag.row) < 2 && Math.Abs(first_tag.column - second_tag.column) < 2)
+                {
+                    panel.Tag = second_tag;
+                    second.Tag = first_tag;
+                    Point player_point = second.Location;
+                    second.Location = panel.Location;
+                    panel.Location = player_point;
+                }
             }
+
         }
         public void Game_Form_Load(object sender, EventArgs e)
         {
             var controls = this.Controls;
-            int index_of_card = 0;
-            for (int a = 0; a < controls.Count; a++)
-            {
-                if (controls[a] is Panel)
-                {
-                    if (Convert.ToString(controls[a].Tag) == "player") { player = new Player("Русико", 20, "player", (Panel)controls[a]); continue; }
-                    cards[index_of_card] = new Card("Анатолий", 10, "enemy", (Panel)controls[a]);
-                    cards[index_of_card].panel.Click += card_click;
-                    cards[index_of_card].name_label.Click += card_click;
-                    cards[index_of_card].health_label.Click += card_click;
-                    cards[index_of_card].picture_pictureBox.Click += card_click;
-                    cards[index_of_card].weapon_pictureBox.Click += card_click;
-                }
-            }
-            
+            for (int row = 0; row < 3; row++)
+                for (int column = 0; column < 3; column++)
+                    if (row == 1 && column == 1)
+                    {
+                        second = new Player("Player", 20, new Point(200 * column, 200 * row), "player");
+                        this.Controls.Add(second.panel);
+                    }
+                    else
+                    {
+                        Card card = new Card("Name", 1, new Point(200 * column, 200 * row), "player");
+                        card.panel.Click += card_click;
+                        card.name_label.Click += card_click;
+                        card.health_label.Click += card_click;
+                        //cards[index_of_card].picture_pictureBox.Click += card_click;
+                        //cards[index_of_card].weapon_pictureBox.Click += card_click;
+                        this.Controls.Add(card.panel);
+                    }
+            //for (int a = 0; a < controls.Count; a++)
+            //{
+            //    if (controls[a] is Panel)
+            //    {
+            //        if (Convert.ToString(controls[a].Tag) == "player") {  }
+            //        cards[index_of_card] = new Card("Анатолий", 10, (Panel)controls[a]);
+            //        cards[index_of_card].panel.Click += card_click;
+            //        //cards[index_of_card].name_label.Click += card_click;
+            //        cards[index_of_card].health_label.Click += card_click;
+            //        //cards[index_of_card].picture_pictureBox.Click += card_click;
+            //        //cards[index_of_card].weapon_pictureBox.Click += card_click;
+            //    }
+            //}
+
         }
 
         private void label1_Click(object sender, EventArgs e)

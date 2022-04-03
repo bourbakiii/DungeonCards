@@ -14,14 +14,12 @@ namespace DungeonCards
     class Player : Card
     {
 
-        public Player(string name, int health, string type, Panel panel):base(name,health,type,panel)
+        public Player(string name, int health, Point point, string type):base(name,health,point, type)
         {
             var controls = this.panel.Controls;
             this.panel.Click += this.click;
             for (int a = 0; a < controls.Count; a++)
                 controls[a].Click += this.click;
-
-            
         }
         void click(object sender, EventArgs e)
         {
