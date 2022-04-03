@@ -18,7 +18,7 @@ namespace DungeonCards
         int rows_count = 3;
         int columns_count = 3;
         Card[] cards = new Card[8];
-        Player second;
+        Player player;
         public Game_Form()
         {
             InitializeComponent();
@@ -30,20 +30,29 @@ namespace DungeonCards
             if (sender is Label) { panel = (Label)sender; panel = panel.Parent; }
             else if (sender is PictureBox) { panel = (PictureBox)sender; panel = panel.Parent; }
             else panel = (Panel)sender;
-            change_positions(player.panel, panel);
-            void change_positions(Panel first, Panel second)
+
+
+
+            if(!change_positions((Panel)player.panel, (Panel)panel)) return
+
+
+
+            Boolean change_positions(Panel first, Panel second)
             {
                 IndexStorage first_tag = (IndexStorage)first.Tag;
                 IndexStorage second_tag = (IndexStorage)second.Tag;
+                debugger.Text = Convert.ToString(((IndexStorage)first.Tag).row + " | " + ((IndexStorage)first.Tag).column);
                 if (Math.Abs((first_tag.row - second_tag.row) + (first_tag.column - second_tag.column)) == 1 &&
                 Math.Abs(first_tag.row - second_tag.row) < 2 && Math.Abs(first_tag.column - second_tag.column) < 2)
                 {
-                    panel.Tag = second_tag;
+                    first.Tag = second_tag;
                     second.Tag = first_tag;
-                    Point player_point = second.Location;
-                    second.Location = panel.Location;
-                    panel.Location = player_point;
+                    Point first_point = second.Location;
+                    second.Location = first.Location;
+                    first.Location = first_point;
+                    return true;
                 }
+                return false;
             }
 
         }
@@ -54,8 +63,8 @@ namespace DungeonCards
                 for (int column = 0; column < 3; column++)
                     if (row == 1 && column == 1)
                     {
-                        second = new Player("Player", 20, new Point(200 * column, 200 * row), "player");
-                        this.Controls.Add(second.panel);
+                        player = new Player("Player", 20, new Point(200 * column, 200 * row), "player");
+                        this.Controls.Add(player.panel);
                     }
                     else
                     {
