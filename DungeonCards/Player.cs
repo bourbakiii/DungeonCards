@@ -20,10 +20,10 @@ namespace DungeonCards
             this.panel.Click += this.click;
             for (int a = 0; a < controls.Count; a++)
                 controls[a].Click += this.click;
+            this.panel.BackColor = Color.DarkGray;
         }
         void click(object sender, EventArgs e)
         {
-            this.panel.BackColor = Color.Red;
         }
     }
 }

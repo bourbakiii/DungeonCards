@@ -34,6 +34,10 @@ namespace DungeonCards
             debugger.Text = Convert.ToString(panel.Location.Y / 200 + " | " + panel.Location.X / 200);
             var card = findByTag(cards, ((IndexStorage)panel.Tag).row, ((IndexStorage)panel.Tag).column);
             if (!change_positions(player, card)) return;
+
+            player.changeHealth(Math.Max(0, player.health - card.health));
+            card.changeHealth(Math.Max(0, card.health - player.health));
+
             bool change_positions(Card first, Card second)
             {
                 debugger.Text = Convert.ToString(Math.Abs((first.panel.Location.Y / 200 - second.panel.Location.Y / 200) + (first.panel.Location.X / 200 - second.panel.Location.X / 200)));
@@ -84,8 +88,10 @@ namespace DungeonCards
                     {
                         cards[row, column] = new Card("Name", 1, new Point(200 * column, 200 * row), "player", Convert.ToString(card_index++));
                         cards[row, column].panel.Click += card_click;
-                        cards[row, column].name_label.Click += card_click;
-                        cards[row, column].health_label.Click += card_click;
+                        for (int a = 0; a < cards[row, column].panel.Controls.Count; a++)
+                        {
+                            cards[row, column].panel.Controls[a].Click += card_click;
+                        }
                         //cards[index_of_card].picture_pictureBox.Click += card_click;
                         //cards[index_of_card].weapon_pictureBox.Click += card_click;
                         this.Controls.Add(cards[row, column].panel);

@@ -36,8 +36,9 @@ namespace DungeonCards
                 Location = point,
                 Size = new Size(200, 200),
                 Tag = new IndexStorage(point.Y / 200, point.X / 200),
-                Text = this.text
-            };
+                Text = this.text,
+                BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        };
             this.health_label = new Label
             {
                 Location = new Point(0, 0),
@@ -58,49 +59,18 @@ namespace DungeonCards
             };
             this.panel.Controls.Add(name_label);
             this.panel.Controls.Add(health_label);
-
-
-            //var controls = this.panel.Controls;
-            ////this.panel.BackColor = this.type == "enemy" ? Color.DarkRed : this.type == "trap" ? Color.Gray : this.panel.BackColor;
-
-            //for (int a = 0; a < controls.Count; a++)
-            //{
-            //    //controls[a].Click += this.click;
-            //    if (controls[a] is Label || controls[a] is PictureBox)
-            //    {
-            //        switch (Convert.ToString(controls[a].Tag))
-            //        {
-            //            case "name":
-            //                {
-            //                    this.name_label = (Label)controls[a];
-            //                    break;
-            //                }
-            //            case "health":
-            //                {
-            //                    this.health_label = (Label)controls[a];
-            //                    break;
-            //                }
-            //            case "picture":
-            //                {
-            //                    this.picture_pictureBox = (PictureBox)controls[a];
-            //                    break;
-            //                }
-            //            case "weapon":
-            //                {
-            //                    this.weapon_pictureBox = (PictureBox)controls[a];
-            //                    break;
-            //                }
-            //        }
-            //    }
-            //}
-            //this.name_label.Text = this.name;
-            //if (this.health_label != null) this.health_label.Text = Convert.ToString(this.health);
+            
 
 
         }
         public void writeTag()
         {
             this.name_label.Text = Convert.ToString(((IndexStorage)this.panel.Tag).row + "|" + ((IndexStorage)this.panel.Tag).column);
+        }
+        public void changeHealth(int value)
+        {
+            this.health = value;
+            this.health_label.Text = value.ToString();
         }
     }
 }
