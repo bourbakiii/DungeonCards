@@ -14,7 +14,7 @@ namespace DungeonCards
     class Player : Card
     {
 
-        public Player(string name, int health, Point point, string type):base(name,health,point, type)
+        public Player(string name, int health, Point point, string type, string text):base(name,health,point, type, text )
         {
             var controls = this.panel.Controls;
             this.panel.Click += this.click;

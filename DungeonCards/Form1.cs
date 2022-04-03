@@ -17,7 +17,7 @@ namespace DungeonCards
     {
         int rows_count = 3;
         int columns_count = 3;
-        Card[] cards = new Card[8];
+        Card[,] cards = new Card[3,3];
         Player player;
         public Game_Form()
         {
@@ -31,50 +31,64 @@ namespace DungeonCards
             else if (sender is PictureBox) { panel = (PictureBox)sender; panel = panel.Parent; }
             else panel = (Panel)sender;
 
-
-
-            if(!change_positions((Panel)player.panel, (Panel)panel)) return
-
-
-
-            Boolean change_positions(Panel first, Panel second)
+            debugger.Text = Convert.ToString(panel.Location.Y / 200 + " | " + panel.Location.X / 200);
+            var card = findByTag(cards, ((IndexStorage)panel.Tag).row, ((IndexStorage)panel.Tag).column);
+            if (!change_positions(player, card)) return;
+            bool change_positions(Card first, Card second)
             {
-                IndexStorage first_tag = (IndexStorage)first.Tag;
-                IndexStorage second_tag = (IndexStorage)second.Tag;
-                debugger.Text = Convert.ToString(((IndexStorage)first.Tag).row + " | " + ((IndexStorage)first.Tag).column);
-                if (Math.Abs((first_tag.row - second_tag.row) + (first_tag.column - second_tag.column)) == 1 &&
-                Math.Abs(first_tag.row - second_tag.row) < 2 && Math.Abs(first_tag.column - second_tag.column) < 2)
+                debugger.Text = Convert.ToString(Math.Abs((first.panel.Location.Y / 200 - second.panel.Location.Y / 200) + (first.panel.Location.X / 200 - second.panel.Location.X / 200)));
+                if (Math.Abs((first.panel.Location.Y/200 - second.panel.Location.Y / 200) + (first.panel.Location.X / 200 - second.panel.Location.X / 200)) == 1 
+                    &&
+                Math.Abs(first.panel.Location.Y / 200 - second.panel.Location.Y / 200) < 2 && Math.Abs(first.panel.Location.X / 200 - second.panel.Location.X / 200) < 2
+                )
                 {
-                    first.Tag = second_tag;
-                    second.Tag = first_tag;
-                    Point first_point = second.Location;
-                    second.Location = first.Location;
-                    first.Location = first_point;
+                    IndexStorage bugger_tag = (IndexStorage)first.panel.Tag;
+                    first.panel.Tag = (IndexStorage)second.panel.Tag;
+                    second.panel.Tag = bugger_tag;
+                    Point first_point = second.panel.Location;
+                    second.panel.Location = first.panel.Location;
+                    first.panel.Location = first_point;
+                    first.writeTag();
+                    second.writeTag();
                     return true;
                 }
                 return false;
             }
-
+            Card findByTag(Card[,] cards, int row, int column)
+            {
+                Card card_return = cards[0, 0];
+                for(int i =0;i<3; i++)
+                    for(int j =0;j<3;j++)
+                    {
+                        if(((IndexStorage)cards[i,j].panel.Tag).row == row && ((IndexStorage)cards[i, j].panel.Tag).column == column)
+                        {
+                            return cards[i, j];
+                        }
+                    }
+                return card_return;
+            }
         }
         public void Game_Form_Load(object sender, EventArgs e)
         {
             var controls = this.Controls;
+            int card_index = 0;
             for (int row = 0; row < 3; row++)
                 for (int column = 0; column < 3; column++)
                     if (row == 1 && column == 1)
                     {
-                        player = new Player("Player", 20, new Point(200 * column, 200 * row), "player");
+                        player = new Player("Player", 20, new Point(200 * column, 200 * row), "player", "-1");
+                        cards[row, column] = player;
                         this.Controls.Add(player.panel);
                     }
                     else
                     {
-                        Card card = new Card("Name", 1, new Point(200 * column, 200 * row), "player");
-                        card.panel.Click += card_click;
-                        card.name_label.Click += card_click;
-                        card.health_label.Click += card_click;
+                        cards[row, column] = new Card("Name", 1, new Point(200 * column, 200 * row), "player", Convert.ToString(card_index++));
+                        cards[row, column].panel.Click += card_click;
+                        cards[row, column].name_label.Click += card_click;
+                        cards[row, column].health_label.Click += card_click;
                         //cards[index_of_card].picture_pictureBox.Click += card_click;
                         //cards[index_of_card].weapon_pictureBox.Click += card_click;
-                        this.Controls.Add(card.panel);
+                        this.Controls.Add(cards[row, column].panel);
                     }
             //for (int a = 0; a < controls.Count; a++)
             //{

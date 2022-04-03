@@ -17,24 +17,26 @@ namespace DungeonCards
         public string name = "Enemy name";
         public int health = 1;
         public string type = "Enemy";
+        public string text;
         public int points = 0;
         public Panel panel;
         public Label name_label;
         public Label health_label;
         public PictureBox picture_pictureBox;
         public PictureBox weapon_pictureBox;
-        protected Card() { }
-        public Card(string name, int health, Point point, string type)
+        public Card() { }
+        public Card(string name, int health, Point point, string type, string text)
         {
             this.name = name ?? "Enemy name";
             this.health = health;
             this.type = type;
+            this.text = text;
             this.panel = new Panel
             {
                 Location = point,
                 Size = new Size(200, 200),
                 Tag = new IndexStorage(point.Y / 200, point.X / 200),
-                Text = this.type
+                Text = this.text
             };
             this.health_label = new Label
             {
@@ -49,7 +51,7 @@ namespace DungeonCards
             {
                 Location = new Point(0, 200 - 20),
                 Size = new Size(200, 20),
-                Text = this.name,
+                Text = Convert.ToString(((IndexStorage)this.panel.Tag).row + "|" + ((IndexStorage)this.panel.Tag).column),
                 ForeColor = Color.Black,
                 Font = new Font(FontFamily.GenericMonospace, 20.0F, GraphicsUnit.Pixel),
                 TextAlign = ContentAlignment.MiddleLeft
@@ -95,6 +97,10 @@ namespace DungeonCards
             //if (this.health_label != null) this.health_label.Text = Convert.ToString(this.health);
 
 
+        }
+        public void writeTag()
+        {
+            this.name_label.Text = Convert.ToString(((IndexStorage)this.panel.Tag).row + "|" + ((IndexStorage)this.panel.Tag).column);
         }
     }
 }
